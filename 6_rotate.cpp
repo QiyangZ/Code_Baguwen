@@ -1,6 +1,6 @@
-#include<iostream>
-#include<vector>
-#include<algorithm> //for solution2
+#include <iostream>
+#include <vector>
+#include <algorithm> //for solution2
 // class Solution {
 // public:
 //     void rotate(std::vector<int>& nums, int k) {
@@ -25,32 +25,36 @@
 //     }
 // };
 
-class Solution{
-    public:
-    void reverse(std::vector<int> &nums, int start, int end){
+class Solution
+{
+public:
+    void reverse(std::vector<int> &nums, int start, int end)
+    {
         int interm;
-        while(start < end){
+        while (start < end)
+        {
             std::swap(nums[start++], nums[end--]);
         }
-        }
+    }
 
-    void rotate(std::vector<int>& nums, int k){
+    void rotate(std::vector<int> &nums, int k)
+    {
         k %= nums.size(); // 非常重要！！！
         reverse(nums, 0, nums.size() - 1);
         reverse(nums, 0, k - 1);
         reverse(nums, k, nums.size() - 1);
     }
-    
 };
 
-
-int main(){
-    std::vector<int> a = {1,2,3,4,5,6,7};
+int main()
+{
+    std::vector<int> a = {1, 2, 3, 4, 5, 6, 7};
     Solution sl;
-    sl.rotate(a,1);
-    for(auto ele: a){
-        std::cout<<ele<<" ";
+    sl.rotate(a, 1);
+    for (auto ele : a)
+    {
+        std::cout << ele << " ";
     }
-    std::cout<<std::endl;
+    std::cout << std::endl;
     return 0;
 }
