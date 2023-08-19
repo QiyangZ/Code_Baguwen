@@ -11,7 +11,8 @@ public:
     {
         if (prices.size() == 1 || prices.empty())
             return 0;
-        int maxProf = 0, buy = prices[0] + fee;
+        int maxProf = 0;
+        int buy = prices[0] + fee;
         for (int i = 1; i < prices.size(); i++)
         {
             if (prices[i] + fee < buy)
@@ -20,6 +21,7 @@ public:
             }
             else if (prices[i] > buy)
             {
+                
                 maxProf += prices[i] - buy;
                 buy = prices[i];
             }
