@@ -67,29 +67,23 @@ class Solution{
             int count = 0;
             if(s[left] == s[i] && s[right] != s[i]){
                 right = i;
-                while(left>=0 && right<=n-1){
-                    if(s[left] == s[right]){
+                while(left>=0 && right<=n-1 && s[left] == s[right]){
                     left--;
                     right++;
                     count += 2;
-                    }
                 }
             }else if(s[right] == s[i] && s[left] != s[i]){
                 left = i;
-                while(left>=0 && right<=n-1){
-                    if(s[left] == s[right]){
+                while(left>=0 && right<=n-1 && s[left] == s[right]){
                     left--;
                     right++;
-                    count += 2;
-                    }
+                    count += 2; 
                 }
             }else{
-                 while(left>=0 && right<=n-1){
-                    if(s[left] == s[right]){
+                 while(left>=0 && right<=n-1 && s[left] == s[right]){
                     left--;
                     right++;
                     count += 2;
-                    }
                 }
                 count +=1;
             }
@@ -111,7 +105,7 @@ class Solution{
 
 
 int main(){
-    string s = "babad";
+    string s = "babbad";
     Solution sol;
     string longti = sol.longestPalindrome(s);
     cout<<"answer is: "<< longti <<endl;
