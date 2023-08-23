@@ -105,39 +105,76 @@ using namespace std;
 //     }
 // };
 
+//别人的中心扩展算法：新定义了一函数
+// class Solution{
+//     public:
+//     pair<int,int> getIndex(string s, int left, int right){
+//         int n = s.length();
+//         while(left>=0 && right<n && s[left]==s[right]){
+//             left--;
+//             right++;
+//         }
+//         return {left + 1,right -1 };
+        
+//     }
+    
+//     string longestPalindrome(string s){
+//         int n = s.length();
+//         int start=0, end=0;
+//         if(n<2) return s;
+//         for(int i =0; i<n; i++){
+//             auto [left1,right1] = getIndex(s,i,i);
+//             auto [left2,right2] = getIndex(s,i,i + 1);
+
+//             if (right1-left1 > end - start){
+//                 start = left1;
+//                 end = right1;
+//             }
+
+//             if(right2-left2 > end - start){
+//                 start = left2;
+//                 end = right2;
+//             }
+//         }
+
+//         return s.substr(start, end - start + 1);
+
+//     }
+// };
+
+//动态规划
 class Solution{
     public:
-    pair<int,int> getIndex(string s, int left, int right){
-        int n = s.length();
-        while(left>=0 && right<n && s[left]==s[right]){
-            left--;
-            right++;
-        }
-        return {left + 1,right -1 };
-        
-    }
-    
     string longestPalindrome(string s){
         int n = s.length();
-        int start=0, end=0;
         if(n<2) return s;
-        for(int i =0; i<n; i++){
-            auto [left1,right1] = getIndex(s,i,i);
-            auto [left2,right2] = getIndex(s,i,i + 1);
 
-            if (right1-left1 > end - start){
-                start = left1;
-                end = right1;
-            }
-
-            if(right2-left2 > end - start){
-                start = left2;
-                end = right2;
-            }
+        vector<vector<bool>> dp(n, vector<bool>(n));
+        int maxLen = 1, start = 0;
+        for(int i = 0; i<n; i++){
+            dp[i][i] = true;
         }
 
-        return s.substr(start, end - start + 1);
+        for(int L = 2; L<=n; L++){
+            for(int i = 0; i<n; i++){
+                int j = i + L -1;
+                if(j >= n) break;
+                if(s[i] == s[j]){
+                    if(j-i<3){
+                        dp[i][j] = true;
+                    }else{
+                        dp[i][j] = dp[i+1][j-1];
+                    }
+                }
 
+                if(j - i + 1 > maxLen && dp[i][j]){
+                    maxLen = j - i + 1;
+                    start = i;
+                }
+
+            }
+        }
+        return s.substr(start,maxLen);
     }
 };
 
