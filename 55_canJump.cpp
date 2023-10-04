@@ -27,14 +27,19 @@ using namespace std;
 //     }
 // };
 
-class Solution{
-    public:
-    bool canJump(vector<int>& nums){
+class Solution
+{
+public:
+    bool canJump(vector<int> &nums)
+    {
         int maxPos = 0;
-        for(int i=0; i<nums.size(); i++){
-            if(i<=maxPos){  // if i>maxPos, then it's meaningless
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (i <= maxPos)
+            { // if i>maxPos, then it's meaningless
                 maxPos = max(i + nums[i], maxPos);
-                if(maxPos>= nums.size()-1) return true;
+                if (maxPos >= nums.size() - 1)
+                    return true;
             }
         }
 
@@ -42,11 +47,11 @@ class Solution{
     }
 };
 
-
-int main(){
-    vector<int> a = {3,2,1,0,4};
+int main()
+{
+    vector<int> a = {3, 2, 1, 0, 4};
     Solution sl;
     bool judge = sl.canJump(a);
-    std::cout<< judge <<std::endl;
+    std::cout << judge << std::endl;
     return 0;
 }
