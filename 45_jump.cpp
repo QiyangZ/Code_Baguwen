@@ -20,11 +20,24 @@ using namespace std;
 //         return nums.size();
 //     }
 //     }; 
-
+ class Solution{
+    public:
+    int jump(vector<int> nums){
+        int counter = 0, maxPosi = 0,currentPosi = 0;
+        for(int i=0; i<nums.size()-1; i++){
+            maxPosi = max(maxPosi, i+nums[i]);
+            if(i == currentPosi){
+                counter++;
+                currentPosi = maxPosi;
+            }
+        }
+        return counter;
+    }
+ };
 
 
 int main(){
-    vector<int> a = {0};
+    vector<int> a = {2,3,0,1,4};
     Solution sl;
     int steps = sl.jump(a);
     std::cout << steps << std::endl;
