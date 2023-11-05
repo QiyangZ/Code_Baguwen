@@ -17,7 +17,7 @@ emplace_back() is more effecient than push_back(), bacause emplace_back() don't 
 #include&lt;stack&gt;  
 #include&lt;queue&gt;  
 #include&lt;iterator&gt;  
-#include&lt;fstream&gt;  
-#include&lt;exception&gt;  
-#include&lt;random&gt;  
-#include&lt;cassert&gt;  
+#include&lt;fstream&gt; 对文件操作的头文件  
+#include&lt;exception&gt; try catch throw, 判断异常  
+#include&lt;random&gt; C++11 标准，产生随机数  
+#include&lt;cassert&gt; 判断异常  
