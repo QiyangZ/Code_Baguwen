@@ -1,3 +1,10 @@
+/*
+    Problem Description:
+    you have a function pProb(), which can generate 1 in probobility p
+    and generate 0 in probobility (1 - p); design a function by using
+    pProb(), that can generate 1 in probobility 0.5 and generate 0 in
+    probobility 0.5;
+ */
 #include <iostream>
 #include <random>
 #include <ctime>
